@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate, Link } from "react-router-dom";
-import signupImg from "../assets/images/signupImg.png";
+import signupImg from "../assets/images/signupimg.png";
 import { BASE_URL } from "../../src/config.js";
 
 const Signup = () => {
