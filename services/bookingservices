@@ -1,0 +1,51 @@
+import axios from "axios";
+
+const API_URL = "http://localhost:5000/api/bookings"; // Backend URL
+
+// Create an appointment
+export const createBooking = async (bookingData, token) => {
+  const response = await axios.post(API_URL, bookingData, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return response.data;
+};
+
+// Get user bookings
+export const getUserBookings = async (token) => {
+  const response = await axios.get(`${API_URL}/my-bookings`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return response.data;
+};
+
+// Get doctor bookings
+export const getDoctorBookings = async (token) => {
+  const response = await axios.get(`${API_URL}/doctor-bookings`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return response.data;
+};
+
+// Admin gets all bookings
+export const getAllBookings = async (token) => {
+  const response = await axios.get(API_URL, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return response.data;
+};
+
+// Accept booking (Doctor/Admin)
+export const acceptBooking = async (id, token) => {
+  const response = await axios.put(`${API_URL}/${id}/accept`, {}, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return response.data;
+};
+
+// Reject booking (Doctor/Admin)
+export const rejectBooking = async (id, token) => {
+  const response = await axios.put(`${API_URL}/${id}/reject`, {}, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return response.data;
+};
